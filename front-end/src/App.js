@@ -1,10 +1,10 @@
 
 import React from 'react';
-import {  ThemeProvider, createTheme } from '@material-ui/core/styles';
-import {BrowserRouter,Routes, Route} from "react-router-dom"
+import {  ThemeProvider, createTheme } from '@mui/material/styles';
+import {BrowserRouter, Route,Routes} from "react-router-dom"
 import HomePage from './pages/HomePage'
 import NotFound from './pages/NotFound';
-
+import ResultPage from './pages/ResultPage'
 const theme = createTheme({
   palette: {
     primary: {
@@ -41,6 +41,7 @@ function App() {
       <BrowserRouter basename="/">
         <Routes>
           <Route exact path="/" element = {<HomePage/>}></Route>
+          <Route exact path="/result" element = {<ResultPage/>}></Route>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>

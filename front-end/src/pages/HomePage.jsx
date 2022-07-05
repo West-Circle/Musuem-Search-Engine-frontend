@@ -1,11 +1,15 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import {withStyles} from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import { withStyles } from "@mui/styles";
+import Typography from '@mui/material/Typography';
+//import SearchBar from '../components/SearchBar1'
 import bg from "../img/background.jpg"
-import logo from "../img/logo.png"
-import logo1 from "../img/logo1.png"
+import logo from "../img/logo1.png"
+import SearchBar from '../components/SearchBar';
+import BasicCard from '../components/BasicCard';
+import Box from '@mui/material/Box';
+import { cardHeaderStyles } from './styles';
 const style = theme => ({
     root:{
         height:'100%',
@@ -18,17 +22,18 @@ const style = theme => ({
         position:'fixed',
     },
     title: {
-        marginLeft: '15px',
-        marginTop: '150px',
+        marginLeft: '600px',
+        marginTop: '100px',
+        textAlign:'center',
+        alignItems:'center',
         color: '#ffffff',
         display: 'flex',
-        alignItems: 'center'
     },
     navBar: {
         backgroundColor: 'transparent',
         color: "#ffffff",
         boxShadow: '0 0 0 0',
-        padding: '20px 30px'
+        padding: '0px 30px'
     },
     content: {
         height: '90%',
@@ -52,23 +57,46 @@ class HomePage extends React.Component {
         input:"",
     }
 
+    handleChange = (value) =>{
+        console.log(value)
+    }
+    
+    getHeader = () => {
+        return (
+            <Box sx={cardHeaderStyles.wrapper}>
+                <SearchBar 
+                    placeholder="Search"
+                    onChange={this.handleChange()}
+                    searchBarWidth='900px'
+                />
+            </Box>
+        )
+    }
+
+    getContent = () => {
+        <Typography 
+            align="center"
+            sx={{ margin: '40px 16px', color: 'rgba(0, 0, 0, 0.6)', fontSize: '1.3rem'}}
+        >
+            No Search Result yet
+        </Typography>
+    }
+
     render(){
         const {classes} = this.props;
         console.log(this.props);
         return(
             <div className={classes.root}>
                 <div className={classes.wrapper}>
-                    <AppBar position='absolute' className={classes.navBar}>
-                        <Toolbar>
-
-                        </Toolbar>
-                    </AppBar>
                     <div>
                         {/*logo and search bar*/}
                         <div className={classes.title}>
-                            <img src={logo1} alt="musuem logo" style={{width:350}}></img>
+                            <img src={logo} alt="musuem logo" style={{textAlign:'center', width:350}}></img>
                         </div>
-
+                        <BasicCard
+                                header={this.getHeader()}
+                                content={this.getContent()}
+                        />
                     </div>
                     <footer className={classes.footer}>
                         <Typography variant="body2" component="p">
