@@ -1,6 +1,4 @@
 import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import { withStyles } from "@mui/styles";
 import Typography from '@mui/material/Typography';
 //import SearchBar from '../components/SearchBar1'
