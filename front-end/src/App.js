@@ -1,7 +1,7 @@
 
 import React from 'react';
 import {  ThemeProvider, createTheme } from '@mui/material/styles';
-import {BrowserRouter, Route,Routes} from "react-router-dom"
+import {BrowserRouter, Route,Switch} from "react-router-dom"
 import HomePage from './pages/HomePage'
 import NotFound from './pages/NotFound';
 import ResultPage from './pages/ResultPage'
@@ -39,11 +39,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter basename="/">
-        <Routes>
-          <Route exact path="/" element = {<HomePage/>}></Route>
-          <Route exact path="/result" element = {<ResultPage/>}></Route>
-          <Route path="*" element={<NotFound/>}/>
-        </Routes>
+        <Switch>
+          <Route exact path="/" component={HomePage}></Route>
+          <Route path="/search/query/:input" component = {ResultPage}></Route>
+          {/*<Route path="/search/query/:input" element = {<ResultPage/>}></Route>
+          */}
+          <Route path="*" component={NotFound}/>
+        </Switch>
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -11,7 +11,6 @@ import Tooltip from '@mui/material/Tooltip';
 import SearchBar from './SearchBar'
 import Box from '@mui/material/Box';
 import BasicCard from '../components/BasicCard';
-import GridWrapper from './GridWrapper';
 import Typography from '@mui/material/Typography';
 const style = theme => ({
     navBar: {

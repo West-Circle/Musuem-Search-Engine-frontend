@@ -3,6 +3,8 @@ import Navbar from '../components/NavBar';
 import Typography from '@mui/material/Typography'
 import { withStyles } from "@mui/styles";
 import bg from '../img/background.jpg'
+import ResultList from '../components/ResultList'
+
 const style = theme => ({
     main: {
         backgroundColor: '#ffffff',
@@ -13,7 +15,7 @@ const style = theme => ({
         top: 0
     },
     wrapper: {
-        padding: '100px 35px 35px 35px',
+        padding: '150px 35px 35px 35px',
         [theme.breakpoints.down("xs")]: {
           padding: "10px 10px"
         },
@@ -33,13 +35,27 @@ const style = theme => ({
         alignItems: 'center',
     }
 })
+
 class ResultPage extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            query:{
+                input: this.props.match.params.input,
+            },
+            page: 1,
+            data: [],
+            loading:true,
+            total: 0,
+        }
+    }
     render(){
         const {classes} = this.props;
         return(
             <div className={classes.main}>
                 <Navbar/>
                 <div className={classes.wrapper}>
+                    <ResultList input={this.props.match.params.input}/>
                 </div>
                 <footer className={classes.footer}>
                         <Typography variant="body2" component="p">
