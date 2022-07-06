@@ -54,20 +54,10 @@ class HomePage extends React.Component {
     state={
         input:"",
     }
-
-    handleChange = (value) =>{
-        console.log(value)
-    }
     
     getHeader = () => {
         return (
-            <Box sx={cardHeaderStyles.wrapper}>
-                <SearchBar 
-                    placeholder="Search"
-                    onChange={this.handleChange()}
-                    searchBarWidth='900px'
-                />
-            </Box>
+            <SearchBar />
         )
     }
 
